@@ -1,0 +1,6 @@
+name: model-presets
+version: 1.0.0
+description: Quick model switching via /codex, /flash, /pro, /kimi — with optional --global flag to persist across sessions
+author: Hermes Agent (via Hannah)
+provides_hooks:
+  - pre_gateway_dispatch

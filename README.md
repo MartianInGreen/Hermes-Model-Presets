@@ -1,6 +1,6 @@
-# hermes-model-presets
+# Hermes Model Presets
 
-Quick model switching for [Hermes Agent](https://github.com/NousResearch/hermes-agent) — adds `/codex`, `/flash`, `/pro`, and `/kimi` slash commands with an optional `--global` flag to persist your model choice across sessions.
+Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/hermes-agent) — adds `/codex`, `/flash`, `/pro`, and `/kimi` slash commands with an optional `--global` flag to persist your model choice across sessions.
 
 ## Commands
 
@@ -23,20 +23,13 @@ Add `--global` to any command to persist the model as your new default:
 
 ```bash
 # Clone the repo into your Hermes plugins directory
-git clone https://github.com/YOUR_USER/hermes-model-presets.git ~/.hermes/plugins/model-presets
+git clone https://github.com/MartianInGreen/Hermes-Model-Presets.git ~/.hermes/plugins/model-presets
 
 # Enable the plugin
 hermes plugins enable model-presets
 
-# Restart the gateway (if using messaging platforms)
+# Restart the gateway (if using Discord / Telegram / etc.)
 hermes gateway restart
-```
-
-Or copy manually:
-
-```bash
-cp -r hermes-model-presets ~/.hermes/plugins/model-presets
-hermes plugins enable model-presets
 ```
 
 ## How It Works
@@ -51,4 +44,4 @@ hermes plugins enable model-presets
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE)

@@ -10,7 +10,7 @@ Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/
 | `/flash` | `deepseek-v4-flash` | `opencode-go` |
 | `/pro` | `deepseek-v4-pro` | `opencode-go` |
 | `/kimi` | `kimi-k2.6` | `opencode-go` |
-| `/minimax` | `minimax/minimax-m3` | `openrouter` |
+| `/minimax` | `minimax/minimax-m3` | `opencode-go` |
 
 Add `--global` to any command to persist the model as your new default:
 

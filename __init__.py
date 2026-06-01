@@ -6,7 +6,7 @@ Provides /codex, /flash, /pro, /kimi, /minimax with optional --global flag.
 /flash [--global]  → DeepSeek V4 Flash via OpenCode Go
 /pro   [--global]  → DeepSeek V4 Pro via OpenCode Go
 /kimi  [--global]  → Kimi K2.6 via OpenCode Go
-/minimax  [--global]  → MiniMax M3 via OpenRouter
+/minimax  [--global]  → MiniMax M3 via OpenCode Go
 
 In the CLI, the switch is applied to the running session immediately.
 In the gateway (Discord/Telegram/etc.), the command is rewritten to the
@@ -47,8 +47,8 @@ PRESETS: Dict[str, Dict[str, str]] = {
     },
     "minimax": {
         "model": "minimax/minimax-m3",
-        "provider": "openrouter",
-        "label": "MiniMax M3 (OpenRouter)",
+        "provider": "opencode-go",
+        "label": "MiniMax M3 (OpenCode Go)",
     },
 }
 

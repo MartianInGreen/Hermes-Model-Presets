@@ -1,12 +1,14 @@
 """model-presets plugin — quick model switching slash commands.
 
-Provides /codex, /flash, /pro, /kimi, /minimax with optional --global flag.
+Provides /codex, /flash, /pro, /kimi, /minimax, /mimo, /mimop with optional --global flag.
 
 /codex [--global]  → OpenAI GPT-5.5 via Codex integration
 /flash [--global]  → DeepSeek V4 Flash via OpenCode Go
 /pro   [--global]  → DeepSeek V4 Pro via OpenCode Go
 /kimi  [--global]  → Kimi K2.6 via OpenCode Go
 /minimax  [--global]  → MiniMax M3 via OpenCode Go
+/mimo     [--global]  → MiMo-V2.5 via OpenCode Go
+/mimop    [--global]  → MiMo-V2.5-Pro via OpenCode Go
 
 In the CLI, the switch is applied to the running session immediately.
 In the gateway (Discord/Telegram/etc.), the command is rewritten to the
@@ -50,11 +52,21 @@ PRESETS: Dict[str, Dict[str, str]] = {
         "provider": "opencode-go",
         "label": "MiniMax M3 (OpenCode Go)",
     },
+    "mimo": {
+        "model": "mimo-v2.5",
+        "provider": "opencode-go",
+        "label": "MiMo-V2.5 (OpenCode Go)",
+    },
+    "mimop": {
+        "model": "mimo-v2.5-pro",
+        "provider": "opencode-go",
+        "label": "MiMo-V2.5-Pro (OpenCode Go)",
+    },
 }
 
 # Regex to match a preset command at the start of a message
 _PRESET_CMD_RE = re.compile(
-    r"^/(codex|flash|pro|kimi|minimax)\b",
+    r"^/(codex|flash|pro|kimi|minimax|mimo|mimop)\b",
     re.IGNORECASE,
 )
 

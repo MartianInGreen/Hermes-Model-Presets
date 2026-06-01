@@ -12,6 +12,8 @@ Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/
 | `/kimi` | `kimi-k2.6` | `opencode-go` |
 | `/minimax` | `minimax/minimax-m3` | `opencode-go` |
 | `/qwen` | `qwen/qwen3.7-max` | `openrouter` |
+| `/mimo` | `mimo-v2.5` | `opencode-go` |
+| `/mimop` | `mimo-v2.5-pro` | `opencode-go` |
 
 Add `--global` to any command to persist the model as your new default:
 

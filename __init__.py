@@ -43,9 +43,9 @@ PRESETS: Dict[str, Dict[str, str]] = {
         "label": "DeepSeek V4 Pro (OpenCode Go)",
     },
     "kimi": {
-        "model": "kimi-k2.6",
+        "model": "kimi-k2.7-code",
         "provider": "opencode-go",
-        "label": "Kimi K2.6 (OpenCode Go)",
+        "label": "Kimi K2.7 Code (OpenCode Go)",
     },
     "minimax": {
         "model": "minimax/minimax-m3",

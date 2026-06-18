@@ -1,11 +1,12 @@
 """model-presets plugin — quick model switching slash commands.
 
-Provides /codex, /flash, /pro, /kimi, /minimax, /mimo, /mimop with optional --global flag.
+Provides /codex, /flash, /glm, /pro, /kimi, /minimax, /mimo, /mimop with optional --global flag.
 
 /codex [--global]  → OpenAI GPT-5.5 via Codex integration
 /flash [--global]  → DeepSeek V4 Flash via OpenCode Go
+/glm   [--global]  → GLM 5.2 via OpenCode Go
 /pro   [--global]  → DeepSeek V4 Pro via OpenCode Go
-/kimi  [--global]  → Kimi K2.6 via OpenCode Go
+/kimi  [--global]  → Kimi K2.7 Code via OpenCode Go
 /minimax  [--global]  → MiniMax M3 via OpenCode Go
 /mimo     [--global]  → MiMo-V2.5 via OpenCode Go
 /mimop    [--global]  → MiMo-V2.5-Pro via OpenCode Go
@@ -37,6 +38,11 @@ PRESETS: Dict[str, Dict[str, str]] = {
         "provider": "opencode-go",
         "label": "DeepSeek V4 Flash (OpenCode Go)",
     },
+    "glm": {
+        "model": "glm-5.2",
+        "provider": "opencode-go",
+        "label": "GLM 5.2 (OpenCode Go)",
+    },
     "pro": {
         "model": "deepseek-v4-pro",
         "provider": "opencode-go",
@@ -66,7 +72,7 @@ PRESETS: Dict[str, Dict[str, str]] = {
 
 # Regex to match a preset command at the start of a message
 _PRESET_CMD_RE = re.compile(
-    r"^/(codex|flash|pro|kimi|minimax|mimo|mimop)\b",
+    r"^/(codex|flash|glm|pro|kimi|minimax|mimo|mimop)\b",
     re.IGNORECASE,
 )
 

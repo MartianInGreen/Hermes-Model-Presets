@@ -6,8 +6,8 @@ Provides /luna, /terra, /sol, /luna-pro, /sol-pro, /flash, /glm, /pro, /kimi,
 /luna      [--global]  → OpenAI GPT-5.6 Luna   via Codex (reasoning: medium)
 /terra     [--global]  → OpenAI GPT-5.6 Terra  via Codex (reasoning: medium)
 /sol       [--global]  → OpenAI GPT-5.6 Sol    via Codex (reasoning: medium)
-/luna-pro  [--global]  → OpenAI GPT-5.6 Luna Pro via Codex (reasoning: high)
-/sol-pro   [--global]  → OpenAI GPT-5.6 Sol Pro  via Codex (reasoning: high)
+/luna-pro  [--global]  → OpenAI GPT-5.6 Luna  via Codex (reasoning: high)
+/sol-pro   [--global]  → OpenAI GPT-5.6 Sol   via Codex (reasoning: high)
 /flash     [--global]  → DeepSeek V4 Flash via OpenCode Go
 /glm       [--global]  → GLM 5.2 via OpenCode Go
 /pro       [--global]  → DeepSeek V4 Pro via OpenCode Go
@@ -54,15 +54,15 @@ PRESETS: Dict[str, Dict[str, str]] = {
         "reasoning": "medium",
     },
     "luna-pro": {
-        "model": "gpt-5.6-luna-pro",
+        "model": "gpt-5.6-luna",
         "provider": "openai-codex",
-        "label": "OpenAI GPT-5.6 Luna Pro",
+        "label": "OpenAI GPT-5.6 Luna (high reasoning)",
         "reasoning": "high",
     },
     "sol-pro": {
-        "model": "gpt-5.6-sol-pro",
+        "model": "gpt-5.6-sol",
         "provider": "openai-codex",
-        "label": "OpenAI GPT-5.6 Sol Pro",
+        "label": "OpenAI GPT-5.6 Sol (high reasoning)",
         "reasoning": "high",
     },
     "flash": {

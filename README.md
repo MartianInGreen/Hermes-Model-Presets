@@ -9,8 +9,8 @@ Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/
 | `/luna` | `gpt-5.6-luna` | `openai-codex` | medium |
 | `/terra` | `gpt-5.6-terra` | `openai-codex` | medium |
 | `/sol` | `gpt-5.6-sol` | `openai-codex` | medium |
-| `/luna-pro` | `gpt-5.6-luna-pro` | `openai-codex` | high |
-| `/sol-pro` | `gpt-5.6-sol-pro` | `openai-codex` | high |
+| `/luna-pro` | `gpt-5.6-luna` | `openai-codex` | high |
+| `/sol-pro` | `gpt-5.6-sol` | `openai-codex` | high |
 | `/flash` | `deepseek-v4-flash` | `opencode-go` | — |
 | `/glm` | `glm-5.2` | `opencode-go` | — |
 | `/pro` | `deepseek-v4-pro` | `opencode-go` | — |
@@ -23,7 +23,7 @@ Add `--global` to any command to persist the model (and its reasoning level, for
 
 ```
 /luna --global      → sets GPT-5.6 Luna as the permanent default with medium reasoning
-/luna-pro --global  → sets GPT-5.6 Luna Pro as the permanent default with high reasoning
+/luna-pro --global  → sets GPT-5.6 Luna with high reasoning as the permanent default
 /flash              → switches to DeepSeek V4 Flash for this session only
 /pro --global       → makes DeepSeek V4 Pro your default model
 ```

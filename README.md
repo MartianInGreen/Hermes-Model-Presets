@@ -6,11 +6,11 @@ Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/
 
 | Command | Model | Provider | Reasoning |
 |---------|-------|----------|-----------|
-| `/luna` | `gpt-5.6-luna` | `openai` | medium |
-| `/terra` | `gpt-5.6-terra` | `openai` | medium |
-| `/sol` | `gpt-5.6-sol` | `openai` | medium |
-| `/luna-pro` | `gpt-5.6-luna-pro` | `openai` | high |
-| `/sol-pro` | `gpt-5.6-sol-pro` | `openai` | high |
+| `/luna` | `gpt-5.6-luna` | `openai-codex` | medium |
+| `/terra` | `gpt-5.6-terra` | `openai-codex` | medium |
+| `/sol` | `gpt-5.6-sol` | `openai-codex` | medium |
+| `/luna-pro` | `gpt-5.6-luna-pro` | `openai-codex` | high |
+| `/sol-pro` | `gpt-5.6-sol-pro` | `openai-codex` | high |
 | `/flash` | `deepseek-v4-flash` | `opencode-go` | — |
 | `/glm` | `glm-5.2` | `opencode-go` | — |
 | `/pro` | `deepseek-v4-pro` | `opencode-go` | — |

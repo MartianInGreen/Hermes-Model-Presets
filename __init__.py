@@ -3,11 +3,11 @@
 Provides /luna, /terra, /sol, /luna-pro, /sol-pro, /flash, /glm, /pro, /kimi,
 /minimax, /mimo, /mimop with optional --global flag.
 
-/luna      [--global]  → OpenAI GPT-5.6 Luna   (reasoning: medium)
-/terra     [--global]  → OpenAI GPT-5.6 Terra  (reasoning: medium)
-/sol       [--global]  → OpenAI GPT-5.6 Sol    (reasoning: medium)
-/luna-pro  [--global]  → OpenAI GPT-5.6 Luna Pro (reasoning: high)
-/sol-pro   [--global]  → OpenAI GPT-5.6 Sol Pro  (reasoning: high)
+/luna      [--global]  → OpenAI GPT-5.6 Luna   via Codex (reasoning: medium)
+/terra     [--global]  → OpenAI GPT-5.6 Terra  via Codex (reasoning: medium)
+/sol       [--global]  → OpenAI GPT-5.6 Sol    via Codex (reasoning: medium)
+/luna-pro  [--global]  → OpenAI GPT-5.6 Luna Pro via Codex (reasoning: high)
+/sol-pro   [--global]  → OpenAI GPT-5.6 Sol Pro  via Codex (reasoning: high)
 /flash     [--global]  → DeepSeek V4 Flash via OpenCode Go
 /glm       [--global]  → GLM 5.2 via OpenCode Go
 /pro       [--global]  → DeepSeek V4 Pro via OpenCode Go
@@ -37,31 +37,31 @@ logger = logging.getLogger(__name__)
 PRESETS: Dict[str, Dict[str, str]] = {
     "luna": {
         "model": "gpt-5.6-luna",
-        "provider": "openai",
+        "provider": "openai-codex",
         "label": "OpenAI GPT-5.6 Luna",
         "reasoning": "medium",
     },
     "terra": {
         "model": "gpt-5.6-terra",
-        "provider": "openai",
+        "provider": "openai-codex",
         "label": "OpenAI GPT-5.6 Terra",
         "reasoning": "medium",
     },
     "sol": {
         "model": "gpt-5.6-sol",
-        "provider": "openai",
+        "provider": "openai-codex",
         "label": "OpenAI GPT-5.6 Sol",
         "reasoning": "medium",
     },
     "luna-pro": {
         "model": "gpt-5.6-luna-pro",
-        "provider": "openai",
+        "provider": "openai-codex",
         "label": "OpenAI GPT-5.6 Luna Pro",
         "reasoning": "high",
     },
     "sol-pro": {
         "model": "gpt-5.6-sol-pro",
-        "provider": "openai",
+        "provider": "openai-codex",
         "label": "OpenAI GPT-5.6 Sol Pro",
         "reasoning": "high",
     },

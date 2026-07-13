@@ -1,25 +1,29 @@
 # Hermes Model Presets
 
-Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/hermes-agent) — adds `/codex`, `/flash`, `/pro`, and `/kimi` slash commands with an optional `--global` flag to persist your model choice across sessions.
+Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/hermes-agent) — adds `/luna`, `/terra`, `/sol`, `/luna-pro`, `/sol-pro`, `/flash`, `/pro`, `/kimi`, and other slash commands with an optional `--global` flag to persist your model choice across sessions.
 
 ## Commands
 
-| Command | Model | Provider |
-|---------|-------|----------|
-| `/codex` | `gpt-5.5` | `openai-codex` (OpenAI Codex) |
-| `/flash` | `deepseek-v4-flash` | `opencode-go` |
-| `/glm` | `glm-5.2` | `opencode-go` |
-| `/pro` | `deepseek-v4-pro` | `opencode-go` |
-| `/kimi` | `kimi-k2.7-code` | `opencode-go` |
-| `/minimax` | `minimax/minimax-m3` | `opencode-go` |
-| `/qwen` | `qwen/qwen3.7-max` | `openrouter` |
-| `/mimo` | `mimo-v2.5` | `opencode-go` |
-| `/mimop` | `mimo-v2.5-pro` | `opencode-go` |
+| Command | Model | Provider | Reasoning |
+|---------|-------|----------|-----------|
+| `/luna` | `gpt-5.6-luna` | `openai` | medium |
+| `/terra` | `gpt-5.6-terra` | `openai` | medium |
+| `/sol` | `gpt-5.6-sol` | `openai` | medium |
+| `/luna-pro` | `gpt-5.6-luna-pro` | `openai` | high |
+| `/sol-pro` | `gpt-5.6-sol-pro` | `openai` | high |
+| `/flash` | `deepseek-v4-flash` | `opencode-go` | — |
+| `/glm` | `glm-5.2` | `opencode-go` | — |
+| `/pro` | `deepseek-v4-pro` | `opencode-go` | — |
+| `/kimi` | `kimi-k2.7-code` | `opencode-go` | — |
+| `/minimax` | `minimax/minimax-m3` | `opencode-go` | — |
+| `/mimo` | `mimo-v2.5` | `opencode-go` | — |
+| `/mimop` | `mimo-v2.5-pro` | `opencode-go` | — |
 
-Add `--global` to any command to persist the model as your new default:
+Add `--global` to any command to persist the model (and its reasoning level, for GPT 5.6 presets) as your new default:
 
 ```
-/codex --global     → sets GPT-5.5 as the permanent default
+/luna --global      → sets GPT-5.6 Luna as the permanent default with medium reasoning
+/luna-pro --global  → sets GPT-5.6 Luna Pro as the permanent default with high reasoning
 /flash              → switches to DeepSeek V4 Flash for this session only
 /pro --global       → makes DeepSeek V4 Pro your default model
 ```
@@ -39,8 +43,8 @@ hermes gateway restart
 
 ## How It Works
 
-- **CLI mode:** the command handler calls Hermes' internal `_handle_model_switch` to apply the model change immediately
-- **Gateway mode (Discord / Telegram / etc.):** a `pre_gateway_dispatch` hook rewrites the preset command to the equivalent `/model` call, which goes through the gateway's normal model-switch pipeline with session override and `--global` persistence
+- **CLI mode:** the command handler calls Hermes' internal `_handle_model_switch` to apply the model change immediately, then updates the session reasoning config. With `--global`, the reasoning level is also saved to `agent.reasoning_effort` in `config.yaml`.
+- **Gateway mode (Discord / Telegram / etc.):** a `pre_gateway_dispatch` hook rewrites the preset command to the equivalent `/model` call, which goes through the gateway's normal model-switch pipeline with session override and `--global` persistence. The hook also sets the session reasoning override for GPT 5.6 presets.
 
 ## Requirements
 

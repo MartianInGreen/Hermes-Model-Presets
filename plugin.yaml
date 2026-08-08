@@ -1,6 +1,6 @@
 name: model-presets
 version: 1.1.0
-description: Quick model switching via /luna, /terra, /sol, /luna-pro, /sol-pro, /flash, /pro, /kimi and more — with optional --global flag to persist across sessions. GPT 5.6 presets set reasoning level automatically.
+description: Quick model switching via /sol, /luna, /sol-high, /luna-max, /luna-go, /flash, /kimi and /glm — with optional --global flag to persist across sessions.
 author: Hermes Agent (via Hannah)
 provides_hooks:
   - pre_gateway_dispatch

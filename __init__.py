@@ -1,20 +1,16 @@
 """model-presets plugin — quick model switching slash commands.
 
-Provides /luna, /terra, /sol, /luna-pro, /sol-pro, /flash, /glm, /pro, /kimi,
-/minimax, /mimo, /mimop with optional --global flag.
+Provides /sol, /luna, /sol-high, /luna-max, /luna-go, /flash, /kimi, and /glm
+with optional --global flag.
 
-/luna      [--global]  → OpenAI GPT-5.6 Luna   via Codex (reasoning: medium)
-/terra     [--global]  → OpenAI GPT-5.6 Terra  via Codex (reasoning: medium)
 /sol       [--global]  → OpenAI GPT-5.6 Sol    via Codex (reasoning: medium)
-/luna-pro  [--global]  → OpenAI GPT-5.6 Luna  via Codex (reasoning: high)
-/sol-pro   [--global]  → OpenAI GPT-5.6 Sol   via Codex (reasoning: high)
+/luna      [--global]  → OpenAI GPT-5.6 Luna   via Codex (reasoning: medium)
+/sol-high  [--global]  → OpenAI GPT-5.6 Sol    via Codex (reasoning: high)
+/luna-max  [--global]  → OpenAI GPT-5.6 Luna   via Codex (reasoning: xhigh)
+/luna-go   [--global]  → Luna via OpenCode Go (reasoning: xhigh)
 /flash     [--global]  → DeepSeek V4 Flash via OpenCode Go
+/kimi      [--global]  → Kimi K3 via OpenCode Go
 /glm       [--global]  → GLM 5.2 via OpenCode Go
-/pro       [--global]  → DeepSeek V4 Pro via OpenCode Go
-/kimi      [--global]  → Kimi K2.7 Code via OpenCode Go
-/minimax   [--global]  → MiniMax M3 via OpenCode Go
-/mimo      [--global]  → MiMo-V2.5 via OpenCode Go
-/mimop     [--global]  → MiMo-V2.5-Pro via OpenCode Go
 
 In the CLI, the switch is applied to the running session immediately.
 In the gateway (Discord/Telegram/etc.), the command is rewritten to the
@@ -35,35 +31,35 @@ logger = logging.getLogger(__name__)
 # ── preset definitions ──────────────────────────────────────────────────
 # (command_name, model_id, provider_slug, label, reasoning_level)
 PRESETS: Dict[str, Dict[str, str]] = {
-    "luna": {
-        "model": "gpt-5.6-luna",
-        "provider": "openai-codex",
-        "label": "OpenAI GPT-5.6 Luna",
-        "reasoning": "medium",
-    },
-    "terra": {
-        "model": "gpt-5.6-terra",
-        "provider": "openai-codex",
-        "label": "OpenAI GPT-5.6 Terra",
-        "reasoning": "medium",
-    },
     "sol": {
         "model": "gpt-5.6-sol",
         "provider": "openai-codex",
         "label": "OpenAI GPT-5.6 Sol",
         "reasoning": "medium",
     },
-    "luna-pro": {
+    "luna": {
         "model": "gpt-5.6-luna",
         "provider": "openai-codex",
-        "label": "OpenAI GPT-5.6 Luna (high reasoning)",
-        "reasoning": "high",
+        "label": "OpenAI GPT-5.6 Luna",
+        "reasoning": "medium",
     },
-    "sol-pro": {
+    "sol-high": {
         "model": "gpt-5.6-sol",
         "provider": "openai-codex",
         "label": "OpenAI GPT-5.6 Sol (high reasoning)",
         "reasoning": "high",
+    },
+    "luna-max": {
+        "model": "gpt-5.6-luna",
+        "provider": "openai-codex",
+        "label": "OpenAI GPT-5.6 Luna (maximum reasoning)",
+        "reasoning": "xhigh",
+    },
+    "luna-go": {
+        "model": "luna",
+        "provider": "opencode-go",
+        "label": "Luna (OpenCode Go, maximum reasoning)",
+        "reasoning": "xhigh",
     },
     "flash": {
         "model": "deepseek-v4-flash",
@@ -77,34 +73,10 @@ PRESETS: Dict[str, Dict[str, str]] = {
         "label": "GLM 5.2 (OpenCode Go)",
         "reasoning": "",
     },
-    "pro": {
-        "model": "deepseek-v4-pro",
-        "provider": "opencode-go",
-        "label": "DeepSeek V4 Pro (OpenCode Go)",
-        "reasoning": "",
-    },
     "kimi": {
-        "model": "kimi-k2.7-code",
+        "model": "kimi-k3",
         "provider": "opencode-go",
-        "label": "Kimi K2.7 Code (OpenCode Go)",
-        "reasoning": "",
-    },
-    "minimax": {
-        "model": "minimax/minimax-m3",
-        "provider": "opencode-go",
-        "label": "MiniMax M3 (OpenCode Go)",
-        "reasoning": "",
-    },
-    "mimo": {
-        "model": "mimo-v2.5",
-        "provider": "opencode-go",
-        "label": "MiMo-V2.5 (OpenCode Go)",
-        "reasoning": "",
-    },
-    "mimop": {
-        "model": "mimo-v2.5-pro",
-        "provider": "opencode-go",
-        "label": "MiMo-V2.5-Pro (OpenCode Go)",
+        "label": "Kimi K3 (OpenCode Go)",
         "reasoning": "",
     },
 }
@@ -114,7 +86,7 @@ _REASONING_LEVELS = {"none", "minimal", "low", "medium", "high", "xhigh"}
 
 # Regex to match a preset command at the start of a message
 _PRESET_CMD_RE = re.compile(
-    r"^/(luna|terra|sol|luna-pro|sol-pro|flash|glm|pro|kimi|minimax|mimo|mimop)\b",
+    r"^/(sol-high|luna-max|luna-go|sol|luna|flash|kimi|glm)(?:\s|$)",
     re.IGNORECASE,
 )
 

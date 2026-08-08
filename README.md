@@ -1,55 +1,45 @@
 # Hermes Model Presets
 
-Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/hermes-agent) — adds `/luna`, `/terra`, `/sol`, `/luna-pro`, `/sol-pro`, `/flash`, `/pro`, `/kimi`, and other slash commands with an optional `--global` flag to persist your model choice across sessions.
-
-## Commands
+Quick model switching plugin for [Hermes Agent](https://github.com/NousResearch/hermes-agent). The Discord picker exposes the following current presets:
 
 | Command | Model | Provider | Reasoning |
-|---------|-------|----------|-----------|
-| `/luna` | `gpt-5.6-luna` | `openai-codex` | medium |
-| `/terra` | `gpt-5.6-terra` | `openai-codex` | medium |
+|---|---|---|---|
 | `/sol` | `gpt-5.6-sol` | `openai-codex` | medium |
-| `/luna-pro` | `gpt-5.6-luna` | `openai-codex` | high |
-| `/sol-pro` | `gpt-5.6-sol` | `openai-codex` | high |
-| `/flash` | `deepseek-v4-flash` | `opencode-go` | — |
-| `/glm` | `glm-5.2` | `opencode-go` | — |
-| `/pro` | `deepseek-v4-pro` | `opencode-go` | — |
-| `/kimi` | `kimi-k2.7-code` | `opencode-go` | — |
-| `/minimax` | `minimax/minimax-m3` | `opencode-go` | — |
-| `/mimo` | `mimo-v2.5` | `opencode-go` | — |
-| `/mimop` | `mimo-v2.5-pro` | `opencode-go` | — |
+| `/luna` | `gpt-5.6-luna` | `openai-codex` | medium |
+| `/sol-high` | `gpt-5.6-sol` | `openai-codex` | high |
+| `/luna-max` | `gpt-5.6-luna` | `openai-codex` | xhigh / maximum |
+| `/luna-go` | `luna` | `opencode-go` | xhigh / maximum |
+| `/flash` | `deepseek-v4-flash` | `opencode-go` | provider default |
+| `/kimi` | `kimi-k3` | `opencode-go` | provider default |
+| `/glm` | `glm-5.2` | `opencode-go` | provider default |
 
-Add `--global` to any command to persist the model (and its reasoning level, for GPT 5.6 presets) as your new default:
+Add `--global` to persist the selected model and reasoning level as the default:
 
-```
-/luna --global      → sets GPT-5.6 Luna as the permanent default with medium reasoning
-/luna-pro --global  → sets GPT-5.6 Luna with high reasoning as the permanent default
-/flash              → switches to DeepSeek V4 Flash for this session only
-/pro --global       → makes DeepSeek V4 Pro your default model
+```text
+/sol-high --global  → GPT-5.6 Sol with high reasoning
+/luna-max           → GPT-5.6 Luna with maximum reasoning for this session
+/luna-go            → Luna through OpenCode Go with maximum reasoning
+/flash              → latest DeepSeek V4 Flash through OpenCode Go
+/kimi               → Kimi K3 through OpenCode Go
+/glm                → GLM 5.2 through OpenCode Go
 ```
 
 ## Installation
 
 ```bash
-# Clone the repo into your Hermes plugins directory
 git clone https://github.com/MartianInGreen/Hermes-Model-Presets.git ~/.hermes/plugins/model-presets
-
-# Enable the plugin
 hermes plugins enable model-presets
-
-# Restart the gateway (if using Discord / Telegram / etc.)
 hermes gateway restart
 ```
 
-## How It Works
-
-- **CLI mode:** the command handler calls Hermes' internal `_handle_model_switch` to apply the model change immediately, then updates the session reasoning config. With `--global`, the reasoning level is also saved to `agent.reasoning_effort` in `config.yaml`.
-- **Gateway mode (Discord / Telegram / etc.):** a `pre_gateway_dispatch` hook rewrites the preset command to the equivalent `/model` call, which goes through the gateway's normal model-switch pipeline with session override and `--global` persistence. The hook also sets the session reasoning override for GPT 5.6 presets.
+The plugin works in CLI and gateway mode. In gateway mode, preset commands are rewritten to Hermes' normal `/model` pipeline, while GPT/Codex presets also apply their reasoning override.
 
 ## Requirements
 
-- Hermes Agent (any recent version with plugin support)
-- Valid API keys for the providers you want to use (configured in `~/.hermes/.env`)
+- Hermes Agent with plugin support
+- Valid provider credentials configured in `~/.hermes/.env`
+- `openai-codex` configured for the Codex presets
+- `opencode-go` configured for the OpenCode Go presets
 
 ## License
 
